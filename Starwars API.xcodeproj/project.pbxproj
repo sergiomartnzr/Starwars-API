@@ -19,6 +19,7 @@
 		D15F90151FB3D927003035D7 /* WebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = D15F90141FB3D927003035D7 /* WebServices.m */; };
 		D15F901A1FB3DB86003035D7 /* SWObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D15F90191FB3DB86003035D7 /* SWObject.m */; };
 		DBF21A3C2681C6287040F143 /* libPods-Starwars API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8083ADB0DC8598602DB2EDBF /* libPods-Starwars API.a */; };
+		ED27FCD91FB8AB65002231C7 /* Details.m in Sources */ = {isa = PBXBuildFile; fileRef = ED27FCD81FB8AB65002231C7 /* Details.m */; };
 		ED8B50AF1FB7E77300EEBCE3 /* cellMainTable.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8B50AD1FB7E77300EEBCE3 /* cellMainTable.m */; };
 		ED8B50B01FB7E77300EEBCE3 /* cellMainTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED8B50AE1FB7E77300EEBCE3 /* cellMainTable.xib */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,8 @@
 		D15F90181FB3DB86003035D7 /* SWObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWObject.h; sourceTree = "<group>"; };
 		D15F90191FB3DB86003035D7 /* SWObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWObject.m; sourceTree = "<group>"; };
 		DBC2878EC656CFD048754948 /* Pods-Starwars API.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starwars API.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Starwars API/Pods-Starwars API.debug.xcconfig"; sourceTree = "<group>"; };
+		ED27FCD71FB8AB65002231C7 /* Details.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Details.h; sourceTree = "<group>"; };
+		ED27FCD81FB8AB65002231C7 /* Details.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Details.m; sourceTree = "<group>"; };
 		ED8B50AC1FB7E77300EEBCE3 /* cellMainTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cellMainTable.h; sourceTree = "<group>"; };
 		ED8B50AD1FB7E77300EEBCE3 /* cellMainTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cellMainTable.m; sourceTree = "<group>"; };
 		ED8B50AE1FB7E77300EEBCE3 /* cellMainTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = cellMainTable.xib; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 			children = (
 				D15F8FF51FB3D790003035D7 /* Home.h */,
 				D15F8FF61FB3D790003035D7 /* Home.m */,
+				ED27FCD71FB8AB65002231C7 /* Details.h */,
+				ED27FCD81FB8AB65002231C7 /* Details.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 				D15F90051FB3D790003035D7 /* main.m in Sources */,
 				D15F8FF41FB3D790003035D7 /* AppDelegate.m in Sources */,
 				D15F90151FB3D927003035D7 /* WebServices.m in Sources */,
+				ED27FCD91FB8AB65002231C7 /* Details.m in Sources */,
 				D15F90121FB3D90B003035D7 /* Declarations.m in Sources */,
 				D15F901A1FB3DB86003035D7 /* SWObject.m in Sources */,
 				ED8B50AF1FB7E77300EEBCE3 /* cellMainTable.m in Sources */,

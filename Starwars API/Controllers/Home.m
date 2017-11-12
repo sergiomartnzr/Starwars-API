@@ -10,7 +10,7 @@
 
 @interface Home ()
 @property (strong, nonatomic) NSMutableArray *people;
-
+@property NSMutableArray *dataToSend;
 @end
 
 int indexPerson = 0;
@@ -135,7 +135,16 @@ int indexPerson = 0;
 }
 //-------------------------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //Pending
+    self.dataToSend = [[NSMutableArray alloc]init];
+    [self.dataToSend addObject:@{
+                         @"name" :  @"Luke",
+                         @"gender" : @"male",
+                         @"hair_color" : @"brown"
+                         }];
+    
+    NSDictionary *objectToSend = self.dataToSend[0];
+    [self performSegueWithIdentifier:@"secondView" sender:objectToSend];
+    NSLog(@"Item selected");
 }
 /**********************************************************************************************/
 #pragma mark - Action methods
@@ -146,8 +155,15 @@ int indexPerson = 0;
 }
 
 
-
-
-
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"secondView"])
+    {
+        Details *controller = [segue destinationViewController];
+        controller.data = sender;
+        NSLog(@"Segueado!!!!!");
+        
+    }
+}
 @end
