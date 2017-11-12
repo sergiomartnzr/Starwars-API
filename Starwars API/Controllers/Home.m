@@ -10,6 +10,7 @@
 
 @interface Home ()
 @property (strong, nonatomic) NSMutableArray *people;
+@property (strong, nonatomic) SWObject *personAtIndex;
 @property NSMutableArray *dataToSend;
 @end
 
@@ -21,6 +22,7 @@ int indexPerson = 0;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     _people = [[NSMutableArray alloc] init];
+    //_personAtIndex = [[SWObject alloc] init];
     [self getPeople];
     [self getPerson];
 }
@@ -69,24 +71,30 @@ int indexPerson = 0;
     }];
 }
 
-- (NSString *)getName:(long) index{
-    __block NSString *indexedName = @"";
+- (SWObject *)getPersonAtIndex:(int) index{
+    NSLog(@"··················· Entering method method");
+    //__block SWObject *personIndex = [[SWObject alloc] init];
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [WebServices getPerson:[NSString stringWithFormat:@"%ld", index] completion:^(NSMutableArray<SWObject> *people) {
+    [WebServices getPeople:^(NSMutableArray<SWObject> *people) {
         
         if(people){
             [_people removeAllObjects];
             [_people addObjectsFromArray:people];
             
-            SWObject *person = [people objectAtIndex:indexPerson];
-            NSString *name = person.name;
-            indexedName = name;
+            self.personAtIndex = [people objectAtIndex:index];
+            NSString *name = self.personAtIndex.name;
             
+            NSLog(@"print name from method works: %@", name);
+            
+            //_personAtIndex = person;
         }
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }];
     
-    return indexedName;
+    NSString *names = self.personAtIndex.name;
+    NSLog(@"IM PRINTING: %@", self.personAtIndex.name);
+    return self.personAtIndex;
 }
 
 /**********************************************************************************************/
@@ -135,11 +143,26 @@ int indexPerson = 0;
 }
 //-------------------------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //Get index number from the current cell
+    cellMainTable *cell = (cellMainTable *)[tableView cellForRowAtIndexPath:indexPath];
+    NSString *index = cell.lblIndex.text;
+    
+    //Call [getPersonAtIndex:NSString index] method to obtain and array with the person's details
+    //SWObject *personAtIndex = [self getPersonAtIndex:index.intValue];
+    //NSString *name = personAtIndex.name;
+    //NSLog(@"////////////////////////////////////////////////////////////////////////print name at didSelecttedRowAtIndexPath: %@", name);
+    
+    SWObject *person = [_people objectAtIndex:index.intValue];
+    NSString *name = person.name;
+    NSString *gender = person.gender;
+    NSString *hair_color = person.hair_color;
+    
     self.dataToSend = [[NSMutableArray alloc]init];
     [self.dataToSend addObject:@{
-                         @"name" :  @"Luke",
-                         @"gender" : @"male",
-                         @"hair_color" : @"brown"
+                         @"name" :  name,
+                         @"gender" : gender,
+                         @"hair_color" : hair_color
                          }];
     
     NSDictionary *objectToSend = self.dataToSend[0];
@@ -151,6 +174,7 @@ int indexPerson = 0;
 /**********************************************************************************************/
 - (IBAction)btnUpdatePressed:(id)sender {
     [self getPeople];
+    //Reload the table to fill it with the characters since at load time, the number of characters is 0
     [self.tbMain reloadData];
 }
 
