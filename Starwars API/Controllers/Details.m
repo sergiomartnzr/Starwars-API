@@ -21,6 +21,9 @@
         self.name.text= self.data[@"name"];
         self.gender.text= self.data[@"gender"];
         self.hair_color.text = self.data[@"hair_color"];
+        self.skin_color.text = self.data[@"skin_color"];
+        self.mass.text = self.data[@"mass"];
+        self.height.text = self.data[@"height"];
     }
 }
 

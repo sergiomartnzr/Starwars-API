@@ -124,16 +124,6 @@ int indexPerson = 0;
     //Fill cell with info from arrays
 
     cell.lblIndex.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-    //cell.lblName.text = @"Luke";
-    
-    //SWObject *person = people objectAtIndex:indexPerson;
-    //NSString *name = person.name;
-    
-    for (int i = 0; i < _people.count; i++) {
-        SWObject *person = [_people objectAtIndex:i];
-        NSString *name = person.name;
-        NSLog(@"------------------- : %@", name);
-    }
     
     SWObject *person = [_people objectAtIndex:indexPath.row];
     NSString *name = person.name;
@@ -157,12 +147,18 @@ int indexPerson = 0;
     NSString *name = person.name;
     NSString *gender = person.gender;
     NSString *hair_color = person.hair_color;
+    NSString *height = person.height;
+    NSString *skin_color = person.skin_color;
+    NSString *mass = person.mass;
     
     self.dataToSend = [[NSMutableArray alloc]init];
     [self.dataToSend addObject:@{
                          @"name" :  name,
                          @"gender" : gender,
-                         @"hair_color" : hair_color
+                         @"hair_color" : hair_color,
+                         @"height" : height,
+                         @"skin_color" : skin_color,
+                         @"mass" : mass
                          }];
     
     NSDictionary *objectToSend = self.dataToSend[0];
